@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 // POJOs
 @Entity(tableName = "superheros")
 
-data class SuperHeros(
+data class SuperHero(
     @PrimaryKey val id: Int,
     val name: String,
     val slug: String,
@@ -19,7 +19,7 @@ data class SuperHeros(
     val images: List<String>,)
 
 
-data class MinSuperHeroesCharacter(val id: Int, val name: String, val slug: String, val appearance: List<String>, val images: List<String>)
+data class MinSuperHerosCharacter(val id: Int, val name: String, val slug: String, val appearance: List<String>, val images: List<String>)
 
 
 

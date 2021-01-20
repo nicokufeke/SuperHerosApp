@@ -7,7 +7,7 @@ import retrofit2.http.GET
 
 interface SuperHeroesAPI {
     @GET("all.json")
-    suspend fun getSuperHeroes(): Response<List<SuperHeros>>
+    suspend fun getSuperHeros(): Response<List<SuperHero>>
 }
 
 // Cliente Retrofit
