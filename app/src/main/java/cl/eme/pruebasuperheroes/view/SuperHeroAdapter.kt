@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import cl.eme.pruebasuperheroes.SuperHero
 import cl.eme.pruebasuperheroes.databinding.SuperheroListBinding
+import coil.load
 
 class SuperHeroAdapter : RecyclerView.Adapter<SuperHeroAdapter.SuperHeroVH>() {
 
@@ -43,6 +44,7 @@ class SuperHeroAdapter : RecyclerView.Adapter<SuperHeroAdapter.SuperHeroVH>() {
     class SuperHeroVH(val binding: SuperheroListBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(superHero: SuperHero) {
             binding.nameView.text = superHero.name
+            binding.imageView.load(superHero.images.md)
 
         }
 

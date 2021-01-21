@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import cl.eme.pruebasuperheroes.databinding.FragmentDetailSuperheroBinding
+import coil.load
 
 class SuperHeroDetailFragment : Fragment() {
 
@@ -21,6 +22,7 @@ class SuperHeroDetailFragment : Fragment() {
         binding.tvName.text = it.name
         binding.textView.text = it.slug
         binding.textView2.text = it.biography.firstAppearance
+        binding.ivSuperHeros.load(it.images.md)
 
     } )
 
