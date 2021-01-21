@@ -44,7 +44,7 @@ class SuperHeroAdapter : RecyclerView.Adapter<SuperHeroAdapter.SuperHeroVH>() {
     class SuperHeroVH(val binding: SuperheroListBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(superHero: SuperHero) {
             binding.nameView.text = superHero.name
-            binding.imageView.load(superHero.images.md)
+            //binding.imageView.load(superHero.images.md)
 
         }
 
