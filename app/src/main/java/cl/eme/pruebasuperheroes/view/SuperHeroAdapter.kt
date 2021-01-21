@@ -6,40 +6,47 @@ import androidx.annotation.NonNull
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
-import cl.eme.pruebasuperheroes.MinSuperHerosCharacter
+import cl.eme.pruebasuperheroes.SuperHero
 import cl.eme.pruebasuperheroes.databinding.SuperheroListBinding
 
-class SuperHeroAdapter : RecyclerView.Adapter<SuperHeroVH>() {
+class SuperHeroAdapter : RecyclerView.Adapter<SuperHeroAdapter.SuperHeroVH>() {
 
-    private var items = listOf<MinSuperHerosCharacter>()
-    private val selectedItem = MutableLiveData<MinSuperHerosCharacter>()
+    private var items = listOf<SuperHero>()
+    private val selectedItem = MutableLiveData<SuperHero>()
 
-    fun selectedItem(): LiveData<MinSuperHerosCharacter> = selectedItem
+    fun selectedItem(): LiveData<SuperHero> = selectedItem
 
-    fun update(minSuperHerosCharacter: List<MinSuperHerosCharacter>) {
+    fun update(minSuperHerosCharacter: List<SuperHero>) {
         items = minSuperHerosCharacter
         notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SuperHeroVH {
-    return SuperHeroVH(SuperheroListBinding.inflate(LayoutInflater.from(parent.context)))
+        val binding = SuperheroListBinding.inflate(LayoutInflater.from(parent.context))
+        return SuperHeroVH(binding)
     }
 
     override fun onBindViewHolder(holder: SuperHeroVH, position: Int) {
-    val item = items[position]
-    holder.bind(item)
+        val item = items[position]
+        holder.bind(item)
+        holder.itemView.setOnClickListener {
+            selectedItem.value = item
+        }
 
     }
 
-    override fun getItemCount()= items.size
+    override fun getItemCount(): Int {
+        return items.size
     }
 
 
-class SuperHeroVH(val binding: SuperheroListBinding) : RecyclerView.ViewHolder(binding.root){
-    fun bind(superHero: MinSuperHerosCharacter) {
+    class SuperHeroVH(val binding: SuperheroListBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(superHero: SuperHero) {
+            binding.nameView.text = superHero.name
+
+        }
 
     }
 
 }
-
 

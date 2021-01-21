@@ -10,18 +10,19 @@ import cl.eme.pruebasuperheroes.databinding.FragmentDetailSuperheroBinding
 
 class SuperHeroDetailFragment : Fragment() {
 
-    lateinit var binding: FragmentDetailSuperheroBinding
+    private lateinit var binding: FragmentDetailSuperheroBinding
 
     private val viewModel: SuperHeroViewModel by activityViewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
     binding = FragmentDetailSuperheroBinding.inflate(layoutInflater)
+    viewModel.selected().observe(viewLifecycleOwner, {
+        binding.tvName.text = it.name
+        binding.textView.text = it.slug
+        binding.textView2.text = it.biography.firstAppearance
 
-
-
-
-
+    } )
 
 
 

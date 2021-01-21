@@ -12,8 +12,8 @@ interface SuperHeroDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(superheros: List<SuperHero>)
 
-    @Query("SELECT id, name, slug FROM superheros")
-    fun getMinSuperHerosCharacter(): LiveData<List<MinSuperHerosCharacter>>
+    @Query("SELECT * FROM superheros")
+    fun getMinSuperHerosCharacter(): LiveData<List<SuperHero>>
 }
 
 @Database(entities = [SuperHero::class], version = 1)
